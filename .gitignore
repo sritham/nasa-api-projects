@@ -1,0 +1,6 @@
+# Local API keys: never commit these
+config.local.js
+.env
+
+.DS_Store
+.claude/

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NASA API Projects</title>
+  <style>
+    :root { color-scheme: light; --bg: #f4f3f0; --surface: #fcfcfb; --border: #e3e2dd; --text: #0b0b0b; --muted: #52514e; --link: #1c5cab; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) { color-scheme: dark; --bg: #111110; --surface: #1a1a19; --border: #2e2e2b; --text: #f0efec; --muted: #c3c2b7; --link: #86b6ef; }
+    }
+    :root[data-theme="dark"] { color-scheme: dark; --bg: #111110; --surface: #1a1a19; --border: #2e2e2b; --text: #f0efec; --muted: #c3c2b7; --link: #86b6ef; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 720px; margin: 0 auto; padding: 32px 16px; }
+    h1 { margin: 0 0 4px; font-size: clamp(24px, 5vw, 32px); }
+    p { color: var(--muted); margin: 0 0 20px; }
+    a.card { display: block; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+    a.card:hover { border-color: var(--muted); }
+    a.card strong { color: var(--link); font-size: 17px; }
+    a.card span { display: block; color: var(--muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>NASA API projects</h1>
+    <p>Small apps built on NASA's open APIs.</p>
+    <a class="card" href="asteroids/">
+      <strong>Asteroid tracker</strong>
+      <span>Asteroids passing near Earth this week: how close, how big, how fast.</span>
+    </a>
+  </main>
+</body>
+</html>

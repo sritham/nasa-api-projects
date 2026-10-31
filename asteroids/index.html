@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Asteroid Tracker</title>
+  <meta name="description" content="Asteroids passing near Earth this week, from NASA's NeoWs API.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="top">
+      <p class="eyebrow"><a href="../">NASA API projects</a></p>
+      <h1>Asteroids passing Earth</h1>
+      <p class="sub" id="range-label">Loading…</p>
+    </header>
+
+    <section class="controls" aria-label="Choose a week">
+      <button type="button" id="prev" aria-label="Previous week">‹ Prev</button>
+      <input type="date" id="start" aria-label="First day of the week">
+      <button type="button" id="next" aria-label="Next week">Next ›</button>
+      <button type="button" id="today" class="ghost">This week</button>
+      <label class="toggle"><input type="checkbox" id="haz-only"> Hazardous only</label>
+    </section>
+
+    <p id="status" class="status" role="status" hidden></p>
+
+    <section class="tiles" id="tiles" aria-label="Summary"></section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>When they pass, and how close</h2>
+        <div class="legend" aria-hidden="true">
+          <span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--series-1)"/></svg>Not hazardous</span>
+          <span><svg width="14" height="14"><path d="M7 1 L13 7 L7 13 L1 7 Z" fill="var(--series-2)"/></svg>Potentially hazardous</span>
+          <span><svg width="22" height="14"><line x1="1" y1="7" x2="21" y2="7" stroke="var(--text-muted)" stroke-width="2" stroke-dasharray="4 3"/></svg>Moon's distance</span>
+        </div>
+      </div>
+      <p class="hint">Lower = closer to Earth (log scale, in lunar distances). Bigger mark = bigger rock. Tap or hover a mark for details.</p>
+      <div id="chart" class="chart"></div>
+      <div id="tooltip" class="tooltip" hidden></div>
+    </section>
+
+    <section class="card">
+      <h2>All asteroids this week</h2>
+      <div class="table-wrap">
+        <table id="table">
+          <thead>
+            <tr>
+              <th><button type="button" data-sort="name">Name</button></th>
+              <th><button type="button" data-sort="time">Closest approach</button></th>
+              <th><button type="button" data-sort="missLD">Miss distance</button></th>
+              <th><button type="button" data-sort="diaAvgM">Size</button></th>
+              <th><button type="button" data-sort="speedKms">Speed</button></th>
+              <th><button type="button" data-sort="hazardous">Hazard</button></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="card settings" id="settings">
+      <summary>API key settings</summary>
+      <p id="key-source" class="hint"></p>
+      <p class="hint">NASA's shared demo key allows only a few requests an hour. Get your own free key at
+        <a href="https://api.nasa.gov/" target="_blank" rel="noopener">api.nasa.gov</a> and paste it here. It's saved only in this browser.</p>
+      <form id="key-form" class="key-form">
+        <input type="password" id="key-input" autocomplete="off" placeholder="Paste your NASA API key" aria-label="NASA API key">
+        <button type="submit">Save</button>
+        <button type="button" id="key-clear" class="ghost">Clear</button>
+      </form>
+    </details>
+
+    <footer class="foot">
+      Data: <a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA NeoWs</a> (JPL close-approach data).
+      "Potentially hazardous" is NASA's label for asteroids that come within 0.05 AU (~19.5 lunar distances) of Earth's orbit and are large enough to matter. It doesn't mean they will hit.
+    </footer>
+  </main>
+
+  <!-- Local-only key file (git-ignored). Missing on the live site, which is fine. -->
+  <script src="config.local.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
