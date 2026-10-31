@@ -22,10 +22,6 @@ Then open http://localhost:8000.
 NASA's shared `DEMO_KEY` allows only a few requests an hour. Get your own free key at https://api.nasa.gov/.
 
 - **Locally:** copy `asteroids/config.example.js` to `asteroids/config.local.js` and put your key in it. That file is git-ignored, so the key never reaches GitHub.
-- **On the live site:** open "API key settings" at the bottom of the page and paste your key. It's saved only in that browser.
+- **In the browser:** open "API key settings" at the bottom of the page and paste your key. It's saved only in that browser.
 
 The asteroid tracker also caches each week's data in the browser for 6 hours, which keeps the number of requests low.
-
-## Hosting (GitHub Pages)
-
-In the repo on GitHub: Settings → Pages → Source: "Deploy from a branch" → `main` / `(root)`. The site will be at https://sritham.github.io/nasa-api-projects/.
